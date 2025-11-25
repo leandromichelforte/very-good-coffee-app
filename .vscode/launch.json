@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "very_good_cofee_app",
+            "name": "very_good_coffee_app",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "very_good_cofee_app (profile mode)",
+            "name": "very_good_coffee_app (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "very_good_cofee_app (release mode)",
+            "name": "very_good_coffee_app (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

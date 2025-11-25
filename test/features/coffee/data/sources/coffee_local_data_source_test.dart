@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_cofee_app/core/clients/shared_preferences_client.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/core/results/result.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
-import 'package:very_good_cofee_app/features/coffee/data/sources/coffee_local_data_source.dart';
+import 'package:very_good_coffee_app/core/clients/shared_preferences_client.dart';
+import 'package:very_good_coffee_app/core/failures/failure.dart';
+import 'package:very_good_coffee_app/core/results/result.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/features/coffee/data/sources/coffee_local_data_source.dart';
 
 class MockSharedPreferencesClient extends Mock
     implements SharedPreferencesClient {}

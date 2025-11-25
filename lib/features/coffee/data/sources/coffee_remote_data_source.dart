@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:very_good_cofee_app/core/clients/main_http_client.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/core/results/result.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/core/clients/main_http_client.dart';
+import 'package:very_good_coffee_app/core/failures/failure.dart';
+import 'package:very_good_coffee_app/core/results/result.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
 
 /// Data source class responsible for fetching coffee data from a remote API.
 class CoffeeRemoteDataSource {

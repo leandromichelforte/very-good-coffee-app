@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/cubit/coffee_cubit.dart';
-import 'package:very_good_cofee_app/features/coffee/widgets/coffee_card_widget.dart';
-import 'package:very_good_cofee_app/features/coffee/widgets/loading_widget.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/favorites/cubit/favorites_cubit.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/coffee/cubit/coffee_cubit.dart';
+import 'package:very_good_coffee_app/features/coffee/widgets/coffee_card_widget.dart';
+import 'package:very_good_coffee_app/features/coffee/widgets/loading_widget.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/favorites/cubit/favorites_cubit.dart';
 
 part './widgets/empty_favorites_widget.dart';
 part './widgets/favorites_list_widget.dart';

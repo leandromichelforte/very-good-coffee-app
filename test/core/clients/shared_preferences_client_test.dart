@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:very_good_cofee_app/core/clients/shared_preferences_client.dart';
+import 'package:very_good_coffee_app/core/clients/shared_preferences_client.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 

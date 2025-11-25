@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/core/results/result.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
-import 'package:very_good_cofee_app/features/coffee/data/repository/coffee_repository_impl.dart';
-import 'package:very_good_cofee_app/features/coffee/data/sources/coffee_remote_data_source.dart';
-import 'package:very_good_cofee_app/features/coffee/data/sources/coffee_local_data_source.dart';
+import 'package:very_good_coffee_app/core/failures/failure.dart';
+import 'package:very_good_coffee_app/core/results/result.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/features/coffee/data/repository/coffee_repository_impl.dart';
+import 'package:very_good_coffee_app/features/coffee/data/sources/coffee_remote_data_source.dart';
+import 'package:very_good_coffee_app/features/coffee/data/sources/coffee_local_data_source.dart';
 
 class MockCoffeeRemoteDataSource extends Mock
     implements CoffeeRemoteDataSource {}

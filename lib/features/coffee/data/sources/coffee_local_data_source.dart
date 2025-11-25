@@ -1,7 +1,7 @@
-import 'package:very_good_cofee_app/core/clients/shared_preferences_client.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/core/results/result.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/core/clients/shared_preferences_client.dart';
+import 'package:very_good_coffee_app/core/failures/failure.dart';
+import 'package:very_good_coffee_app/core/results/result.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
 
 /// Data source class responsible for managing coffee data in local storage.
 ///

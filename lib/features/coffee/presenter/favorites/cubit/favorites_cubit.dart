@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/core/results/result.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
-import 'package:very_good_cofee_app/features/coffee/data/repository/coffee_repository.dart';
+import 'package:very_good_coffee_app/core/failures/failure.dart';
+import 'package:very_good_coffee_app/core/results/result.dart';
+import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.dart';
+import 'package:very_good_coffee_app/features/coffee/data/repository/coffee_repository.dart';
 
 part 'favorites_state.dart';
 

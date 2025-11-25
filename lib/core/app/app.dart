@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_cofee_app/core/constants/strings_constants.dart';
-import 'package:very_good_cofee_app/core/themes/app_theme.dart';
-import 'package:very_good_cofee_app/features/coffee/data/repository/coffee_repository.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/coffee_tab.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/cubit/coffee_cubit.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/favorites/cubit/favorites_cubit.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/favorites/favorites_tab.dart';
-import 'package:very_good_cofee_app/main.dart';
+import 'package:very_good_coffee_app/core/constants/strings_constants.dart';
+import 'package:very_good_coffee_app/core/themes/app_theme.dart';
+import 'package:very_good_coffee_app/features/coffee/data/repository/coffee_repository.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/coffee/coffee_tab.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/coffee/cubit/coffee_cubit.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/favorites/cubit/favorites_cubit.dart';
+import 'package:very_good_coffee_app/features/coffee/presenter/favorites/favorites_tab.dart';
+import 'package:very_good_coffee_app/main.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

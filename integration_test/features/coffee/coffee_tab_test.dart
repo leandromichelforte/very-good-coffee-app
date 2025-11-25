@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:very_good_cofee_app/core/app/app.dart';
-import 'package:very_good_cofee_app/core/injectors/injector.dart';
+import 'package:very_good_coffee_app/core/app/app.dart';
+import 'package:very_good_coffee_app/core/injectors/injector.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
