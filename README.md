@@ -23,53 +23,53 @@ Thank you for reviewing my assessment project. Guided by the provided **Coding V
 ✅ Provides clear feedback to users for loading, connectivity, and error states.
 
 <div align="center">
-  <img src="assets/vgv_android.png" alt="Android Screenshot" width="300" />
   <img src="assets/vgv_ios.png" alt="iOS Screenshot" width="300" />
+  <img src="assets/vgv_android.png" alt="Android Screenshot" width="300" />
 </div>
 
 ## Architecture Diagram
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    USER LAYER (Widgets)                     │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │             CoffeeTab  │  FavoritesTab                │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│              PRESENTER LAYER (State Management)             │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │           CoffeeCubit  │  FavoritesCubit              │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                        DATA LAYER                           │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │  Repository (CoffeeRepository)                        │  │
-│  │  ├── Remote Data Source (CoffeeRemoteDataSource)      │  │
-│  │  └── Local Data Source (CoffeeLocalDataSource)        │  │
-│  │  Models (CoffeeModel)                                 │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                       CLIENT LAYER                          │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │        MainHttpClient  │  SharedPreferencesClient     │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      PACKAGES LAYER                         │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │                   http  │  shared_preferences         │  │
-│  └───────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+            ┌─────────────────────────────────────────────────────────────┐
+            │                    USER LAYER (Widgets)                     │
+            │  ┌───────────────────────────────────────────────────────┐  │
+            │  │             CoffeeTab  │  FavoritesTab                │  │
+            │  └───────────────────────────────────────────────────────┘  │
+            └─────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+            ┌─────────────────────────────────────────────────────────────┐
+            │              PRESENTER LAYER (State Management)             │
+            │  ┌───────────────────────────────────────────────────────┐  │
+            │  │           CoffeeCubit  │  FavoritesCubit              │  │
+            │  └───────────────────────────────────────────────────────┘  │
+            └─────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+            ┌─────────────────────────────────────────────────────────────┐
+            │                        DATA LAYER                           │
+            │  ┌───────────────────────────────────────────────────────┐  │
+            │  │  Repository (CoffeeRepository)                        │  │
+            │  │  ├── Remote Data Source (CoffeeRemoteDataSource)      │  │
+            │  │  └── Local Data Source (CoffeeLocalDataSource)        │  │
+            │  │  Models (CoffeeModel)                                 │  │
+            │  └───────────────────────────────────────────────────────┘  │
+            └─────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+            ┌─────────────────────────────────────────────────────────────┐
+            │                       CLIENT LAYER                          │
+            │  ┌───────────────────────────────────────────────────────┐  │
+            │  │        MainHttpClient  │  SharedPreferencesClient     │  │
+            │  └───────────────────────────────────────────────────────┘  │
+            └─────────────────────────────────────────────────────────────┘
+                                        │
+                                        ▼
+            ┌─────────────────────────────────────────────────────────────┐
+            │                      PACKAGES LAYER                         │
+            │  ┌───────────────────────────────────────────────────────┐  │
+            │  │                   http  │  shared_preferences         │  │
+            │  └───────────────────────────────────────────────────────┘  │
+            └─────────────────────────────────────────────────────────────┘
 ```
 
 ## Getting Started
@@ -79,13 +79,13 @@ Follow these steps to set up and run the project locally:
 ### 1. Clone the Repository
 Clone the repository to your machine:
 ```bash
-git clone https://github.com/leandromichelforte/very-good-cofee-app.git
+git clone https://github.com/leandromichelforte/very-good-coffee-app.git
 ```
 
 ### 2. Install Dependencies
 Navigate into the project directory and fetch all dependencies:
 ```bash
-cd very_good_cofee_app
+cd very-good-coffee-app
 flutter pub get
 ```
 
