@@ -17,7 +17,7 @@ void main() {
     group('Error', () {
       test('should create an Error result with the given failure', () {
         const failure = NetworkFailure(message: 'Network error!');
-        final result = Result.error(failure);
+        final result = Result<String>.error(failure);
 
         expect(result, isA<Error<String>>());
         expect((result as Error<String>).failure, equals(failure));
@@ -25,7 +25,7 @@ void main() {
 
       test('Error of UnknownFailure should store the correct failure', () {
         const failure = UnknownFailure(message: 'Unknown error');
-        final result = Result.error(failure);
+        final result = Result<int>.error(failure);
 
         expect(result, isA<Error<int>>());
         expect((result as Error<int>).failure, equals(failure));
