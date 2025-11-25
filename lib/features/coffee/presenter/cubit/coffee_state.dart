@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:very_good_cofee_app/core/failures/failure.dart';
-import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
+part of 'coffee_cubit.dart';
 
 sealed class CoffeeState extends Equatable {
   const CoffeeState();

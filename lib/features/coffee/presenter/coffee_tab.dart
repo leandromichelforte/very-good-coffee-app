@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/coffee_cubit.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/coffee_state.dart';
-import 'package:very_good_cofee_app/features/coffee/widgets/custom_error_widget.dart';
-import 'package:very_good_cofee_app/features/coffee/widgets/loading_widget.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/cubit/coffee_cubit.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/widgets/custom_error_widget.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/widgets/loading_widget.dart';
 
 class CoffeeTab extends StatelessWidget {
   const CoffeeTab({super.key});

@@ -5,7 +5,7 @@ import 'package:very_good_cofee_app/core/constants/strings_constants.dart';
 import 'package:very_good_cofee_app/core/injectors/injector.dart';
 import 'package:very_good_cofee_app/core/screens/home_screen.dart';
 import 'package:very_good_cofee_app/features/coffee/data/repository/coffee_repository.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee/coffee_cubit.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/cubit/coffee_cubit.dart';
 
 final getIt = GetIt.I;
 
