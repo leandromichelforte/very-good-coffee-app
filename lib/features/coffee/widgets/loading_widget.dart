@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({super.key});
+  const LoadingWidget({required this.message, super.key});
+
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class LoadingWidget extends StatelessWidget {
       mainAxisAlignment: .center,
       children: [
         const CircularProgressIndicator.adaptive(),
-        Text('Your coffee is getting ready...'),
+        Text(message),
       ],
     );
   }

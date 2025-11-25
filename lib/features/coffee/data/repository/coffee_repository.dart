@@ -10,4 +10,28 @@ abstract interface class CoffeeRepository {
   ///
   /// Returns a [Result] containing a [CoffeeModel] on success, or a [Failure] on error.
   Future<Result<CoffeeModel>> fetchCoffee();
+
+  /// Gets the favorite coffees.
+  ///
+  /// Returns a [Result] containing a [List<CoffeeModel>] on success,
+  /// or a [Failure] on error.
+  Future<Result<List<CoffeeModel>>> getFavorites();
+
+  /// Adds the given [coffee] to the favorites list.
+  ///
+  /// Returns a [Result] which is `Ok` with `void` on success,
+  /// or `Error` with a [Failure] on failure.
+  Future<Result<void>> addToFavorites(CoffeeModel coffee);
+
+  /// Removes the given [coffee] from the favorites list.
+  ///
+  /// Returns a [Result] which is `Ok` with `void` on success,
+  /// or `Error` with a [Failure] on failure.
+  Future<Result<void>> removeFromFavorites(CoffeeModel coffee);
+
+  /// Checks whether the given [coffee] is in the favorites list.
+  ///
+  /// Returns a [Result] which is `Ok` with `true` if the coffee is a favorite,
+  /// `false` if not, or `Error` with a [Failure] on failure.
+  Future<Result<bool>> isCoffeeFavorite(CoffeeModel coffee);
 }

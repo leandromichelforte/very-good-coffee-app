@@ -28,7 +28,7 @@ class CoffeeRemoteDataSource {
       return Result.error(NetworkFailure(message: e.message));
     } catch (e) {
       return Result.error(
-        UnknownFailure(message: 'An unexpected error occurred:\n$e'),
+        UnknownFailure(message: 'An unexpected error occurred:\n\n$e'),
       );
     }
   }

@@ -15,6 +15,15 @@ void main() {
         expect(model.imageUrl, equals(testImageUrl));
       });
     });
+    group('toJson', () {
+      test('should convert CoffeeModel to a valid JSON string', () {
+        const model = CoffeeModel(imageUrl: testImageUrl);
+
+        final jsonString = model.toJson();
+
+        expect(jsonString, equals(jsonEncode({'file': testImageUrl})));
+      });
+    });
 
     group('equality', () {
       test('should be equal when imageUrls are the same', () {

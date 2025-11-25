@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:very_good_cofee_app/features/coffee/presenter/coffee_tab.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/coffee/coffee_tab.dart';
+import 'package:very_good_cofee_app/features/coffee/presenter/favorites/favorites_tab.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,19 +14,14 @@ class HomeScreen extends StatelessWidget {
           title: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.coffee_rounded), text: 'Coffee'),
-              Tab(icon: Icon(Icons.favorite_border_rounded), text: 'Favorites'),
+              Tab(icon: Icon(Icons.favorite_rounded), text: 'Favorites'),
             ],
           ),
         ),
         body: Column(
           children: [
             const Expanded(
-              child: TabBarView(
-                children: [
-                  CoffeeTab(),
-                  Center(child: Text('Favorites')),
-                ],
-              ),
+              child: TabBarView(children: [CoffeeTab(), FavoritesTab()]),
             ),
           ],
         ),

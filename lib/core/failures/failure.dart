@@ -18,6 +18,11 @@ class NetworkFailure extends Failure {
   const NetworkFailure({required super.message});
 }
 
+/// Represents a failure that occurs during operations involving shared preferences.
+class LocalStorageFailure extends Failure {
+  const LocalStorageFailure({required super.message});
+}
+
 /// Represents an unknown or unexpected failure.
 class UnknownFailure extends Failure {
   const UnknownFailure({required super.message});

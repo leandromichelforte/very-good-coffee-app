@@ -16,6 +16,12 @@ class CoffeeModel extends Equatable {
     return CoffeeModel(imageUrl: imageUrl);
   }
 
+  /// Converts this [CoffeeModel] instance to a JSON string representation.
+  String toJson() {
+    final map = {'file': imageUrl};
+    return jsonEncode(map);
+  }
+
   @override
   List<Object> get props => [imageUrl];
 }
