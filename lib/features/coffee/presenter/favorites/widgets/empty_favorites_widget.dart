@@ -5,7 +5,7 @@ class _EmptyFavoritesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: .center,
         spacing: 8,

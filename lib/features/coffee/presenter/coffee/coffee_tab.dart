@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
 import 'package:very_good_cofee_app/features/coffee/presenter/coffee/cubit/coffee_cubit.dart';
 import 'package:very_good_cofee_app/features/coffee/widgets/custom_error_widget.dart';
 import 'package:very_good_cofee_app/features/coffee/widgets/loading_widget.dart';
@@ -8,6 +9,12 @@ import 'package:very_good_cofee_app/features/coffee/widgets/coffee_card_widget.d
 
 class CoffeeTab extends StatelessWidget {
   const CoffeeTab({super.key});
+
+  void _showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), duration: const Duration(seconds: 2)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +27,14 @@ class CoffeeTab extends StatelessWidget {
                 state is CoffeeRemoveFromFavoritesSuccess) {
               context.read<FavoritesCubit>().loadFavorites();
             } else if (state is CoffeeAddToFavoritesFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Failed to add this coffee to your favorites. Try again later.',
-                  ),
-                  duration: Duration(seconds: 2),
-                ),
+              _showSnackBar(
+                context,
+                'Failed to add this coffee to your favorites. Try again later.',
               );
             } else if (state is CoffeeRemoveFromFavoritesFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Failed to remove this coffee from your favorites. Try again later.',
-                  ),
-                  duration: Duration(seconds: 2),
-                ),
+              _showSnackBar(
+                context,
+                'Failed to remove this coffee from your favorites. Try again later.',
               );
             }
           },
@@ -43,7 +42,8 @@ class CoffeeTab extends StatelessWidget {
             return (previous is CoffeeLoadInProgress &&
                     current is CoffeeLoadSuccess) ||
                 current is CoffeeAddToFavoritesSuccess ||
-                current is CoffeeRemoveFromFavoritesSuccess;
+                current is CoffeeRemoveFromFavoritesSuccess ||
+                current is CoffeeLoadInProgress;
           },
           builder: (context, state) {
             return switch (state) {
@@ -54,47 +54,67 @@ class CoffeeTab extends StatelessWidget {
                 message: 'Something went wrong while loading your coffee',
                 onRetry: context.read<CoffeeCubit>().fetchCoffee,
               ),
-              CoffeeLoadSuccess(:final coffee) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 24,
-                children: [
-                  Expanded(child: CoffeeCardWidget(coffee: coffee)),
-                  Row(
-                    spacing: 8,
-                    children: [
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          icon: Icon(Icons.coffee_rounded),
-                          label: Text('New coffee'),
-                          onPressed: context.read<CoffeeCubit>().fetchCoffee,
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          icon: Icon(Icons.favorite_rounded),
-                          label: Text(
-                            state.isFavorite
-                                ? 'Remove from favorites'
-                                : 'Add to favorites',
-                          ),
-                          onPressed: () {
-                            final coffeeCubit = context.read<CoffeeCubit>();
-                            if (state.isFavorite) {
-                              coffeeCubit.removeFromFavorites(coffee);
-                            } else {
-                              coffeeCubit.addToFavorites(coffee);
-                            }
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              CoffeeLoadSuccess(:final coffee, :final isFavorite) =>
+                _CoffeeLoadSuccessWidget(
+                  coffee: coffee,
+                  isFavorite: isFavorite,
+                ),
             };
           },
         ),
       ),
+    );
+  }
+}
+
+class _CoffeeLoadSuccessWidget extends StatelessWidget {
+  const _CoffeeLoadSuccessWidget({
+    required this.coffee,
+    required this.isFavorite,
+  });
+
+  final CoffeeModel coffee;
+  final bool isFavorite;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 24,
+      children: [
+        Expanded(child: CoffeeCardWidget(coffee: coffee)),
+        Row(
+          spacing: 8,
+          children: [
+            Expanded(
+              child: ElevatedButton.icon(
+                icon: Icon(Icons.coffee_rounded),
+                label: Text('New coffee', textAlign: .center),
+                onPressed: context.read<CoffeeCubit>().fetchCoffee,
+              ),
+            ),
+            Expanded(
+              child: ElevatedButton.icon(
+                icon: Icon(
+                  isFavorite ? Icons.delete_rounded : Icons.favorite_rounded,
+                ),
+                label: Text(
+                  isFavorite ? 'Remove from favorites' : 'Add to favorites',
+                  textAlign: .center,
+                ),
+                onPressed: () {
+                  final coffeeCubit = context.read<CoffeeCubit>();
+                  if (isFavorite) {
+                    coffeeCubit.removeFromFavorites(coffee);
+                  } else {
+                    coffeeCubit.addToFavorites(coffee);
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

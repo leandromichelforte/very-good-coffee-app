@@ -14,43 +14,36 @@ class FavoritesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: BlocConsumer<FavoritesCubit, FavoritesState>(
-          listener: (context, state) {
-            if (state is RemoveFromFavoritesSuccess) {
-              context.read<CoffeeCubit>().syncIsFavorite();
-            } else if (state is RemoveFromFavoritesFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                    'Something went wrong while removing the coffee from favorites. Try again later.',
-                  ),
-                  duration: Duration(seconds: 2),
-                ),
-              );
-            }
-          },
-          buildWhen: (_, current) {
-            return current is! RemoveFromFavoritesFailure &&
-                current is! RemoveFromFavoritesLoadInProgress;
-          },
-          builder: (context, state) {
-            if (state is FavoritesLoadSuccess) {
-              if (state.favorites.isEmpty) {
-                return const _EmptyFavoritesWidget();
-              }
+    return BlocConsumer<FavoritesCubit, FavoritesState>(
+      listener: (context, state) {
+        if (state is RemoveFromFavoritesSuccess) {
+          context.read<CoffeeCubit>().syncIsFavorite();
+        } else if (state is RemoveFromFavoritesFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Something went wrong while removing the coffee from favorites. Try again later.',
+              ),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      },
+      buildWhen: (_, current) {
+        return current is! RemoveFromFavoritesFailure &&
+            current is! RemoveFromFavoritesLoadInProgress;
+      },
+      builder: (context, state) {
+        if (state is FavoritesLoadSuccess) {
+          if (state.favorites.isEmpty) {
+            return const _EmptyFavoritesWidget();
+          }
 
-              return _FavoritesListWidget(favorites: state.favorites);
-            }
+          return _FavoritesListWidget(favorites: state.favorites);
+        }
 
-            return const LoadingWidget(
-              message: 'Loading your favorite coffees...',
-            );
-          },
-        ),
-      ),
+        return const LoadingWidget(message: 'Loading your favorite coffees...');
+      },
     );
   }
 }
