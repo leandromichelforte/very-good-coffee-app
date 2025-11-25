@@ -1,4 +1,4 @@
-import 'package:very_good_cofee_app/core/failures.dart';
+import 'package:very_good_cofee_app/core/failures/failure.dart';
 
 /// Utility class that simplifies handling errors.
 ///

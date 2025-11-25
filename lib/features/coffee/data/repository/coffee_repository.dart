@@ -1,5 +1,5 @@
-import 'package:very_good_cofee_app/core/failures.dart';
-import 'package:very_good_cofee_app/core/result.dart';
+import 'package:very_good_cofee_app/core/failures/failure.dart';
+import 'package:very_good_cofee_app/core/results/result.dart';
 import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
 
 /// Repository interface for fetching coffee data.

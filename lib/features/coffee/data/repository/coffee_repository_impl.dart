@@ -1,4 +1,4 @@
-import 'package:very_good_cofee_app/core/result.dart';
+import 'package:very_good_cofee_app/core/results/result.dart';
 import 'package:very_good_cofee_app/features/coffee/data/models/coffee_model.dart';
 import 'package:very_good_cofee_app/features/coffee/data/repository/coffee_repository.dart';
 import 'package:very_good_cofee_app/features/coffee/data/sources/coffee_remote_data_source.dart';

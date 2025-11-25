@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:very_good_cofee_app/core/result.dart';
-import 'package:very_good_cofee_app/core/failures.dart';
+import 'package:very_good_cofee_app/core/results/result.dart';
+import 'package:very_good_cofee_app/core/failures/failure.dart';
 
 void main() {
   group('Result', () {
