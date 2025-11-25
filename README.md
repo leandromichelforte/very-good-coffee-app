@@ -1,6 +1,6 @@
-# Very Good Coffee App
+# Very Good Coffee App ☕
 
-Hello VGV team,
+Hello VGV team 👋
 
 Thank you for reviewing my assessment project. Guided by the provided **Coding Values**, **Technical Requirements**, and **User Requirements**, I have developed this application with attention to quality and clarity:
 
@@ -108,7 +108,6 @@ To execute the integration tests, run:
 ```bash
 flutter test integration_test/
 ```
-
 
 ## Environment
 
