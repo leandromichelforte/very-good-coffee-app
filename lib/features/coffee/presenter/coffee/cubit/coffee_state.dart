@@ -34,12 +34,26 @@ final class CoffeeLoadFailure extends CoffeeState {
   List<Object> get props => [failure];
 }
 
+final class CoffeeAddToFavoritesLoadInProgress extends CoffeeLoadSuccess {
+  const CoffeeAddToFavoritesLoadInProgress({
+    required super.coffee,
+    super.isFavorite,
+  });
+}
+
 final class CoffeeAddToFavoritesSuccess extends CoffeeLoadSuccess {
   const CoffeeAddToFavoritesSuccess({required super.coffee, super.isFavorite});
 }
 
 final class CoffeeAddToFavoritesFailure extends CoffeeLoadSuccess {
   const CoffeeAddToFavoritesFailure({required super.coffee, super.isFavorite});
+}
+
+final class CoffeeRemoveFromFavoritesLoadInProgress extends CoffeeLoadSuccess {
+  const CoffeeRemoveFromFavoritesLoadInProgress({
+    required super.coffee,
+    super.isFavorite,
+  });
 }
 
 final class CoffeeRemoveFromFavoritesSuccess extends CoffeeLoadSuccess {

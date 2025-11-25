@@ -33,6 +33,10 @@ final class FavoritesLoadFailure extends FavoritesState {
   List<Object> get props => [failure];
 }
 
+final class RemoveFromFavoritesLoadInProgress extends FavoritesLoadSuccess {
+  const RemoveFromFavoritesLoadInProgress({required super.favorites});
+}
+
 final class RemoveFromFavoritesSuccess extends FavoritesLoadSuccess {
   const RemoveFromFavoritesSuccess({required super.favorites});
 }

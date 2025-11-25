@@ -117,7 +117,7 @@ void main() {
     );
 
     blocTest<CoffeeCubit, CoffeeState>(
-      'emits CoffeeAddToFavoritesSuccess when addToFavorites succeeds',
+      'emits [CoffeeAddToFavoritesLoadInProgress, CoffeeAddToFavoritesSuccess] when addToFavorites succeeds',
       setUp: () {
         when(
           () => mockCoffeeRepository.addToFavorites(any()),
@@ -126,6 +126,7 @@ void main() {
       build: () => CoffeeCubit(coffeeRepository: mockCoffeeRepository),
       act: (cubit) => cubit.addToFavorites(coffeeModel),
       expect: () => <CoffeeState>[
+        CoffeeAddToFavoritesLoadInProgress(coffee: coffeeModel),
         CoffeeAddToFavoritesSuccess(coffee: coffeeModel, isFavorite: true),
       ],
       verify: (_) {
@@ -134,7 +135,7 @@ void main() {
     );
 
     blocTest<CoffeeCubit, CoffeeState>(
-      'emits CoffeeAddToFavoritesFailure when addToFavorites fails',
+      'emits [CoffeeAddToFavoritesLoadInProgress, CoffeeAddToFavoritesFailure] when addToFavorites fails',
       setUp: () {
         when(() => mockCoffeeRepository.addToFavorites(any())).thenAnswer(
           (_) async =>
@@ -144,6 +145,7 @@ void main() {
       build: () => CoffeeCubit(coffeeRepository: mockCoffeeRepository),
       act: (cubit) => cubit.addToFavorites(coffeeModel),
       expect: () => <CoffeeState>[
+        CoffeeAddToFavoritesLoadInProgress(coffee: coffeeModel),
         CoffeeAddToFavoritesFailure(coffee: coffeeModel, isFavorite: false),
       ],
       verify: (_) {
@@ -152,7 +154,7 @@ void main() {
     );
 
     blocTest<CoffeeCubit, CoffeeState>(
-      'emits CoffeeRemoveFromFavoritesSuccess when removeFromFavorites succeeds',
+      'emits [CoffeeRemoveFromFavoritesLoadInProgress, CoffeeRemoveFromFavoritesSuccess] when removeFromFavorites succeeds',
       setUp: () {
         when(
           () => mockCoffeeRepository.removeFromFavorites(any()),
@@ -161,6 +163,7 @@ void main() {
       build: () => CoffeeCubit(coffeeRepository: mockCoffeeRepository),
       act: (cubit) => cubit.removeFromFavorites(coffeeModel),
       expect: () => <CoffeeState>[
+        CoffeeRemoveFromFavoritesLoadInProgress(coffee: coffeeModel),
         CoffeeRemoveFromFavoritesSuccess(
           coffee: coffeeModel,
           isFavorite: false,
@@ -172,7 +175,7 @@ void main() {
     );
 
     blocTest<CoffeeCubit, CoffeeState>(
-      'emits CoffeeRemoveFromFavoritesFailure when removeFromFavorites fails',
+      'emits [CoffeeRemoveFromFavoritesLoadInProgress, CoffeeRemoveFromFavoritesFailure] when removeFromFavorites fails',
       setUp: () {
         when(() => mockCoffeeRepository.removeFromFavorites(any())).thenAnswer(
           (_) async =>
@@ -182,6 +185,7 @@ void main() {
       build: () => CoffeeCubit(coffeeRepository: mockCoffeeRepository),
       act: (cubit) => cubit.removeFromFavorites(coffeeModel),
       expect: () => <CoffeeState>[
+        CoffeeRemoveFromFavoritesLoadInProgress(coffee: coffeeModel),
         CoffeeRemoveFromFavoritesFailure(coffee: coffeeModel, isFavorite: true),
       ],
       verify: (_) {

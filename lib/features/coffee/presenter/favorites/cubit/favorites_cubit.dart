@@ -42,6 +42,10 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     final currentState = state;
     if (currentState is! FavoritesLoadSuccess) return;
 
+    // It's needed to show the Snackbar as many times the user gets
+    // the failure state. It doesn't trigger additional build methods.
+    emit(RemoveFromFavoritesLoadInProgress(favorites: currentState.favorites));
+
     final removeFromFavoritesResult = await _coffeeRepository
         .removeFromFavorites(coffee);
 

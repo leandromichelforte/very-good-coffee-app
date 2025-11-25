@@ -77,7 +77,7 @@ void main() {
 
     group('removeFromFavorites', () {
       blocTest<FavoritesCubit, FavoritesState>(
-        'emits [RemoveFromFavoritesSuccess, FavoritesLoadInProgress, FavoritesLoadSuccess] '
+        'emits [RemoveFromFavoritesLoadInProgress, RemoveFromFavoritesSuccess, FavoritesLoadInProgress, FavoritesLoadSuccess] '
         'when removeFromFavorites succeeds',
         setUp: () {
           when(
@@ -91,6 +91,7 @@ void main() {
         seed: () => FavoritesLoadSuccess(favorites: favoritesList),
         act: (cubit) => cubit.removeFromFavorites(coffeeModel1),
         expect: () => [
+          RemoveFromFavoritesLoadInProgress(favorites: favoritesList),
           RemoveFromFavoritesSuccess(favorites: favoritesList),
           const FavoritesLoadInProgress(),
           FavoritesLoadSuccess(favorites: [coffeeModel2]),
@@ -104,7 +105,7 @@ void main() {
       );
 
       blocTest<FavoritesCubit, FavoritesState>(
-        'emits [RemoveFromFavoritesFailure] when removeFromFavorites fails',
+        'emits [RemoveFromFavoritesLoadInProgress, RemoveFromFavoritesFailure] when removeFromFavorites fails',
         setUp: () {
           when(
             () => mockCoffeeRepository.removeFromFavorites(any()),
@@ -116,7 +117,10 @@ void main() {
         build: () => favoritesCubit,
         seed: () => FavoritesLoadSuccess(favorites: favoritesList),
         act: (cubit) => cubit.removeFromFavorites(coffeeModel1),
-        expect: () => [RemoveFromFavoritesFailure(favorites: favoritesList)],
+        expect: () => [
+          RemoveFromFavoritesLoadInProgress(favorites: favoritesList),
+          RemoveFromFavoritesFailure(favorites: favoritesList),
+        ],
         verify: (_) {
           verify(
             () => mockCoffeeRepository.removeFromFavorites(coffeeModel1),

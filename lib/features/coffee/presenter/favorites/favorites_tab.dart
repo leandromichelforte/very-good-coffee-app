@@ -32,21 +32,21 @@ class FavoritesTab extends StatelessWidget {
               );
             }
           },
+          buildWhen: (_, current) {
+            return current is! RemoveFromFavoritesFailure &&
+                current is! RemoveFromFavoritesLoadInProgress;
+          },
           builder: (context, state) {
-            return BlocBuilder<FavoritesCubit, FavoritesState>(
-              builder: (context, state) {
-                if (state is FavoritesLoadSuccess) {
-                  if (state.favorites.isEmpty) {
-                    return const _EmptyFavoritesWidget();
-                  }
+            if (state is FavoritesLoadSuccess) {
+              if (state.favorites.isEmpty) {
+                return const _EmptyFavoritesWidget();
+              }
 
-                  return _FavoritesListWidget(favorites: state.favorites);
-                }
+              return _FavoritesListWidget(favorites: state.favorites);
+            }
 
-                return const LoadingWidget(
-                  message: 'Loading your favorite coffees...',
-                );
-              },
+            return const LoadingWidget(
+              message: 'Loading your favorite coffees...',
             );
           },
         ),

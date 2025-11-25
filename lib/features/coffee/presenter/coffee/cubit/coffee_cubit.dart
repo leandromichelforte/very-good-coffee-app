@@ -42,6 +42,10 @@ class CoffeeCubit extends Cubit<CoffeeState> {
 
   /// Adds the given [coffee] to the favorites and updates the state accordingly.
   void addToFavorites(CoffeeModel coffee) async {
+    // It's needed to show the Snackbar as many times the user gets
+    // the failure state. It doesn't trigger additional build methods.
+    emit(CoffeeAddToFavoritesLoadInProgress(coffee: coffee));
+
     final addToFavoritesResult = await _coffeeRepository.addToFavorites(coffee);
 
     switch (addToFavoritesResult) {
@@ -56,6 +60,10 @@ class CoffeeCubit extends Cubit<CoffeeState> {
 
   /// Removes the given [coffee] from the favorites and emits new state.
   void removeFromFavorites(CoffeeModel coffee) async {
+    // It's needed to show the Snackbar as many times the user gets
+    // the failure state. It doesn't trigger additional build methods.
+    emit(CoffeeRemoveFromFavoritesLoadInProgress(coffee: coffee));
+
     final removeFromFavoritesResult = await _coffeeRepository
         .removeFromFavorites(coffee);
 

@@ -13,7 +13,7 @@ class CoffeeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: BlocConsumer<CoffeeCubit, CoffeeState>(
           listener: (context, state) {
             if (state is CoffeeAddToFavoritesSuccess ||
@@ -28,65 +28,70 @@ class CoffeeTab extends StatelessWidget {
                   duration: Duration(seconds: 2),
                 ),
               );
+            } else if (state is CoffeeRemoveFromFavoritesFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Failed to remove this coffee from your favorites. Try again later.',
+                  ),
+                  duration: Duration(seconds: 2),
+                ),
+              );
             }
           },
+          buildWhen: (previous, current) {
+            return (previous is CoffeeLoadInProgress &&
+                    current is CoffeeLoadSuccess) ||
+                current is CoffeeAddToFavoritesSuccess ||
+                current is CoffeeRemoveFromFavoritesSuccess;
+          },
           builder: (context, state) {
-            return BlocBuilder<CoffeeCubit, CoffeeState>(
-              builder: (context, state) {
-                return switch (state) {
-                  CoffeeLoadInProgress() ||
-                  CoffeeInitial() => const LoadingWidget(
-                    message: 'Your coffee is getting ready...',
-                  ),
-                  CoffeeLoadFailure() => CustomErrorWidget(
-                    message: 'Something went wrong while loading your coffee',
-                    onRetry: context.read<CoffeeCubit>().fetchCoffee,
-                  ),
-                  CoffeeLoadSuccess(:final coffee) => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 24,
+            return switch (state) {
+              CoffeeLoadInProgress() || CoffeeInitial() => const LoadingWidget(
+                message: 'Your coffee is getting ready...',
+              ),
+              CoffeeLoadFailure() => CustomErrorWidget(
+                message: 'Something went wrong while loading your coffee',
+                onRetry: context.read<CoffeeCubit>().fetchCoffee,
+              ),
+              CoffeeLoadSuccess(:final coffee) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 24,
+                children: [
+                  Expanded(child: CoffeeCardWidget(coffee: coffee)),
+                  Row(
+                    spacing: 8,
                     children: [
-                      Expanded(child: CoffeeCardWidget(coffee: coffee)),
-                      Row(
-                        spacing: 8,
-                        children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              icon: Icon(Icons.coffee_rounded),
-                              label: Text('New coffee'),
-                              onPressed: context
-                                  .read<CoffeeCubit>()
-                                  .fetchCoffee,
-                            ),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          icon: Icon(Icons.coffee_rounded),
+                          label: Text('New coffee'),
+                          onPressed: context.read<CoffeeCubit>().fetchCoffee,
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          icon: Icon(Icons.favorite_rounded),
+                          label: Text(
+                            state.isFavorite
+                                ? 'Remove from favorites'
+                                : 'Add to favorites',
                           ),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              icon: Icon(Icons.favorite_rounded),
-                              label: Text(
-                                state.isFavorite
-                                    ? 'Remove from favorites'
-                                    : 'Add to favorites',
-                              ),
-                              onPressed: () {
-                                if (state.isFavorite) {
-                                  context
-                                      .read<CoffeeCubit>()
-                                      .removeFromFavorites(coffee);
-                                } else {
-                                  context.read<CoffeeCubit>().addToFavorites(
-                                    coffee,
-                                  );
-                                }
-                              },
-                            ),
-                          ),
-                        ],
+                          onPressed: () {
+                            final coffeeCubit = context.read<CoffeeCubit>();
+                            if (state.isFavorite) {
+                              coffeeCubit.removeFromFavorites(coffee);
+                            } else {
+                              coffeeCubit.addToFavorites(coffee);
+                            }
+                          },
+                        ),
                       ),
                     ],
                   ),
-                };
-              },
-            );
+                ],
+              ),
+            };
           },
         ),
       ),
