@@ -9,7 +9,7 @@ import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.da
 /// in device local storage.
 class CoffeeLocalDataSource {
   /// Creates a new [CoffeeLocalDataSource] with the given shared preferences client.
-  CoffeeLocalDataSource({
+  const CoffeeLocalDataSource({
     required SharedPreferencesClient sharedPreferencesClient,
   }) : _sharedPreferencesClient = sharedPreferencesClient,
        _key = 'favorites';
