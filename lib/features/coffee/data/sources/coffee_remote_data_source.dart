@@ -7,7 +7,7 @@ import 'package:very_good_coffee_app/features/coffee/data/models/coffee_model.da
 
 /// Data source class responsible for fetching coffee data from a remote API.
 class CoffeeRemoteDataSource {
-  CoffeeRemoteDataSource({required MainHttpClient mainHttpClient})
+  const CoffeeRemoteDataSource({required MainHttpClient mainHttpClient})
     : _mainHttpClient = mainHttpClient,
       _coffeeUrl = 'https://coffee.alexflipnote.dev/random.json';
 
