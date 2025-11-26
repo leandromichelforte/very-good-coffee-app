@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:very_good_coffee_app/core/injectors/injector.dart';
+import 'package:very_good_coffee_app/core/app/app.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+final getIt = GetIt.I;
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Injector.inject(getIt);
+  runApp(const App());
 }
